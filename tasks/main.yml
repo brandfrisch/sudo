@@ -1,0 +1,37 @@
+---
+# tasks file for sudo
+
+- name: Install sudo
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ sudo_packages }}"
+    - "{{ sudo_additional_packages }}"
+  tags:
+    - package
+    - sudo
+
+- name: Include /etc/sudoers.d
+  lineinfile:
+    dest: "/etc/sudoers"
+    #  hashmark in the next line is mandatory - as it is NO comment
+    line: "#includedir /etc/sudoers.d"
+    validate: "visudo -cf %s"
+  tags:
+    - config
+    - sudo
+
+- name: Creating sudoers group configuration under /etc/sudoers.d
+  template:
+    src: "{{ item }}"
+    dest: "/etc/sudoers.d/groups"
+    validate: "visudo -cf %s"
+    owner: root
+    group: root
+    mode: "0440"
+  with_items:
+    - "{{ sudo_config_file }}"
+  tags:
+    - config
+    - sudo

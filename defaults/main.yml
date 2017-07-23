@@ -1,0 +1,12 @@
+---
+# defaults file for sudo
+
+sudo_groups:
+  - name: sudo
+    nopasswd: yes
+
+sudo_packages:
+  - sudo
+sudo_additional_packages: []
+
+sudo_config_file: sudoers.j2

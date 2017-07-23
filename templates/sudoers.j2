@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+
+{% for group in sudo_groups %}
+
+{% if group.nopasswd  %}
+%{{ group.name }}    ALL=(ALL) NOPASSWD:ALL
+{% else %}
+%{{ group.name }}    ALL=(ALL:ALL) ALL
+{% endif %}
+Defaults:%{{ group.name }} !requiretty
+
+{% endfor %}

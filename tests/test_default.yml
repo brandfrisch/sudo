@@ -1,0 +1,23 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+    goss:
+      package:
+        sudo:
+          installed: true
+      group:
+        sudo:
+          exists: true
+
+  pre_tasks:
+
+    - name: Copy tests to remote
+      copy:
+        content: "{{ goss | to_nice_yaml }}"
+        dest: "/tmp/goss.yml"
+
+    - name: test goss files
+      goss:
+        path: "/tmp/goss.yml"
+        format: documentation

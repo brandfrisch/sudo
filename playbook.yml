@@ -1,0 +1,10 @@
+---
+- hosts: all
+  vars:
+    sudo_groups:
+      - name: sudo
+        nopasswd: yes
+      - name: foo
+        nopasswd: no
+  roles:
+    - role: sudo
