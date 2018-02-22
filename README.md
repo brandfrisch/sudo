@@ -1,4 +1,4 @@
-sudo [![Build Status](https://travis-ci.org/brandfrisch/sudo.svg?branch=master)](https://travis-ci.org/brandfrisch/sudo)
+sudo
 =========
 
 This is a rule to setup the sudo on a unix system
