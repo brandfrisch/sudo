@@ -1,0 +1,7 @@
+---
+package:
+  sudo:
+    installed: true
+group:
+  sudo:
+    exists: true
