@@ -18,6 +18,9 @@
     #  hashmark in the next line is mandatory - as it is NO comment
     line: "#includedir /etc/sudoers.d"
     validate: "visudo -cf %s"
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - config
     - sudo
